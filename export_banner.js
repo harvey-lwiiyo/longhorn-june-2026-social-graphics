@@ -48,6 +48,12 @@ async function main() {
     if (stage) stage.style.transform = 'scale(1)';
   });
 
+  // Remove the Longhorn logo block per request
+  await page.evaluate(() => {
+    const logo = document.querySelector('.banner .logo');
+    if (logo) logo.remove();
+  });
+
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(2000);
 
